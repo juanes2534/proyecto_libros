@@ -31,7 +31,8 @@ const Usuarios = db.define('usuarios',{
   },
   fecha_registro:{
     type: DataTypes.DATE,
-    allowNull: false
+    allowNull: false,
+    defaultValue: DataTypes.NOW
   }
 },{
   timestamps: false

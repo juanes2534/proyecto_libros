@@ -12,8 +12,12 @@ const Libros = db.define('libros',{
     unique: true,
     allowNull: false
   },
+  autor:{
+    type: DataTypes.STRING(60),
+    allowNull: false
+  },
   descripcion:{
-    type: DataTypes.STRING(255),
+    type: DataTypes.STRING(300),
     allowNull: false
   },
   editorial:{
@@ -25,12 +29,13 @@ const Libros = db.define('libros',{
     allowNull: false
   },
   archivo_pdf:{
-    type: DataTypes.STRING(255),
+    type: DataTypes.STRING(300),
     allowNull: false
   },
   fecha_publicacion:{
     type: DataTypes.DATE,
-    allowNull: false
+    allowNull: false,
+    defaultValue: DataTypes.NOW
   },
   administradores_cedula:{
     type: DataTypes.INTEGER(11),
