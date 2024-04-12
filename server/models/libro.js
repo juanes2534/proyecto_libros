@@ -5,7 +5,12 @@ import db from '../database/db.js';
 const Libros = db.define('libros',{
   idlibros: {
     type: DataTypes.INTEGER(11),
-    primaryKey: true
+    primaryKey: true,
+    autoIncrement: true
+  },
+  imagen:{
+    type: DataTypes.STRING(300),
+    allowNull: false
   },
   titulo: {
     type: DataTypes.STRING(255),
