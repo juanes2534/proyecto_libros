@@ -3,11 +3,18 @@
     margin: 0;
     padding: 0;
   }
+  .fijo{
+    position: sticky;
+    top: 0px;
+    background: #ffffff;
+    z-index: 1;
+  }
   .navbar{
     display: flex;
     justify-content: space-around;
     padding: 16px;
     box-shadow: 0 2px 0px 0px #74C0FC;
+    /* left: 20px; */
   }
   .nav-logo{
     display: flex;

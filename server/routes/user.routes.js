@@ -1,9 +1,30 @@
 import express from "express";
-import { postuser } from "../controllers/auth.controller.js";
 import { upload } from "../multer/multer.js";
+import { archivo_pdf, comprar, imagen, libro } from "../controllers/user.controller.js";
 // esto es para poner rutas
-const router = express.Router()
+import jwt from 'jsonwebtoken'
 
-// ruta para registrar a un usuario
-router.post("/postuser",postuser)
+const verificarToken=(req,res, next)=>{
+    const token = req.headers['authorization'];
+    if (!token){
+        return res.status(401).json({message: 'Token no proporcionado'})
+    }
+    jwt.verify(token,'secreto',(err,decodedToken)=>{
+    if (err){
+        return res.static(403).json({message: 'Token inválido'})
+    }
+    req.userid = decodedToken.userid;
+    next()
+    });
+}
+const router = express.Router()
+router.use('/imagen', express.static('libros'));
+router.use("/archivo_pdf", express.static('libros'))
+router.use("/libro", express.static('libros'))
+// Ruta para obtener la información de un libro en especifico
+router.post("/libro",libro)
+// router.get("/libro",libro)
+router.get("/imagen/",imagen)
+router.get("/archivo_pdf/",archivo_pdf)
+router.post("/compra",verificarToken, comprar)
 export default router

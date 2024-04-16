@@ -8,6 +8,7 @@ import db from "./database/db.js"
 import auth from "./routes/auth.routes.js";
 import user from "./routes/user.routes.js";
 import admin from "./routes/admin.routes.js";
+import payment from './routes/payment.routes.js'
 
 // iniciamos el servidor
 const app = express()
@@ -15,7 +16,7 @@ const app = express()
 //middlewares
 app.use(cors())
 app.use(express.json())
-app.use(express.urlencoded({ extended: false }));
+app.use(express.urlencoded({ extended: true }));
 app.use(session({
     secret: 'tu_secreto',
     resave: false,
@@ -26,6 +27,7 @@ app.use(session({
 app.use('/', auth);
 app.use('/user', user);
 app.use('/admin', admin);
+app.use('/payment',payment)
 
 //Esto comprueba la conexion a la base de datos
 try {

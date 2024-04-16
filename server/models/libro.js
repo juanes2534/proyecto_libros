@@ -22,7 +22,7 @@ const Libros = db.define('libros',{
     allowNull: false
   },
   descripcion:{
-    type: DataTypes.STRING(300),
+    type: DataTypes.STRING(700),
     allowNull: false
   },
   editorial:{

@@ -1,0 +1,144 @@
+.main-libro{
+    display: flex;
+    justify-content: space-around;
+    /* background-color: aquamarine; */
+    width: 80%;
+    margin: auto;
+    margin-top: 10px;
+}
+.main-libro_imagen{
+    border: 1px ;
+    border-color: rgba(76, 73, 73, 0.464);
+    border-radius: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 600px;
+    height: min-content;
+}
+.imagen{
+    width: 85%;
+    height: 95%;
+    margin: auto;
+    /* -webkit-box-shadow: -12px -12px 16px 1px rgba(194,194,194,1);
+    -moz-box-shadow: -12px -12px 16px 1px rgba(194,194,194,1);
+    box-shadow: -12px -12px 16px 1px rgba(194,194,194,1); */
+    -webkit-box-shadow: -16px -8px 26px 9px rgba(0,0,0,0.43);
+-moz-box-shadow: -16px -8px 26px 9px rgba(0,0,0,0.43);
+box-shadow: -16px -8px 26px 9px rgba(0,0,0,0.43);
+}
+.main-libro_informacion{
+    border: 1px ;
+    border-color: rgba(76, 73, 73, 0.464);
+    border-radius: 10px;
+    width: 1600px;
+    display: flex;
+    flex-direction: column;
+    align-self: center;
+    /* justify-content: center; */
+    padding-top: 25px;
+    margin-left: 12px;
+    background-color: antiquewhite;
+    /* position: fixed; */
+}
+.main-libro_informacion-texto{
+    width: 90%;
+    margin: auto;
+    background-color: antiquewhite;
+}
+.main-libro_informacion-texto-autor{
+    width: 90%;
+    margin: auto;
+    margin-top: 20px;
+    background-color: antiquewhite;
+    font-weight: 300;
+    color: #535455;
+    font-size: 19px;
+}
+.main-libro_informacion-texto-autor span{
+    font-weight: 600;
+}
+.main-libro_informacion-linea{
+    border: none;
+    width: 90%;
+    height: 3px;
+    border-radius: 10px;
+    background: #74C0FC;
+    margin: auto;
+    margin-top: 30px;
+    margin-bottom: 30px;
+}
+.main-libro_informacion-texto-precio{
+    width: 90%;
+    margin: auto;
+    background-color: antiquewhite;
+    font-size: 17px;
+    font-weight: 300;
+    margin-bottom: 17px;
+    /* display: flex;
+    justify-content: right; */
+}
+.main-libro_informacion-texto-precio span{
+    font-weight: 600;
+    /* color: #74C0FC; */
+}
+.boton-comprar{
+    width: 120px;
+    height: 30px;
+    border-radius: 15px;
+    /* background-color: rgb(255, 203, 135); */
+    font-weight: 400;
+    font-size: 18px;
+    background: #74C0FC;
+    cursor: pointer;
+    color: #ffffff;
+}
+.boton-comprar:hover{
+    background: #74c1fca2;
+}
+.main-libro_informacion-boton{
+    display: flex;
+    justify-content:right;
+    margin-right: 5%;
+    padding-bottom: 25px;
+    padding-top: 15px;
+}
+.linea{
+    border: none;
+    width: 90%;
+    height: 2.5px;
+    border-radius: 10px;
+    background: #b8bbbe50;
+    margin: auto;
+    margin-top: 30px;
+    margin-bottom: 30px;
+}
+.main-r-descripcion{
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    /* background-color: aquamarine; */
+    width: 80%;
+    margin: auto;
+    margin-top: 30px;
+}
+.descripcion{
+    margin-left: 15px;
+    font-size: 27px;
+    font-weight: 300;
+}
+.navegacion{
+    width: 77%;
+    margin: auto;
+    margin-top: 30px;
+    margin-bottom: 30px;
+}
+.descripcion-texto{
+    margin-top: 20px;
+    margin-left: 15px;
+    font-size: 18px;
+}
+.editorial{
+
+}
+
