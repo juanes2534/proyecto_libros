@@ -17,17 +17,17 @@ export const Admin = ({ dato }) => {
   const navegar = () => {
     navegate("/admin")
   }
-  const salir=()=>{
+  const salir = () => {
     localStorage.removeItem("token");
     navegate("/")
   }
   return (
     <div className='menu-lateral'>
       <div className='nav-logo-admin'>
-        <div className='salir' onClick={()=>{salir()}}>
+        <div className='salir' onClick={() => { salir() }}>
           <i className="fa-solid fa-right-from-bracket fa-flip-horizontal fa-xl"></i>
         </div>
-        <div className='logo' onClick={()=>{navegar()}}>
+        <div className='logo' onClick={() => { navegar() }}>
           <i className="fa-solid fa-book fa-2xl" style={{ color: "#74C0FC" }}></i>
           <p className='navbar-texto-admin'>BOOKS</p>
         </div>

@@ -1,6 +1,6 @@
 import express from "express";
 import { upload } from "../multer/multer.js";
-import { archivo_pdf, comprar, imagen, libro } from "../controllers/user.controller.js";
+import { archivo_pdf, categorias, comprar, descargas, imagen, libro, verficarcompra } from "../controllers/user.controller.js";
 // esto es para poner rutas
 import jwt from 'jsonwebtoken'
 
@@ -11,7 +11,7 @@ const verificarToken=(req,res, next)=>{
     }
     jwt.verify(token,'secreto',(err,decodedToken)=>{
     if (err){
-        return res.static(403).json({message: 'Token inválido'})
+        return res.status(403).json({message: 'Token inválido'})
     }
     req.userid = decodedToken.userid;
     next()
@@ -27,4 +27,7 @@ router.post("/libro",libro)
 router.get("/imagen/",imagen)
 router.get("/archivo_pdf/",archivo_pdf)
 router.post("/compra",verificarToken, comprar)
+router.post("/verificarCompra",verificarToken,verficarcompra)
+router.post("/categorias",categorias)
+router.get("/descargas",verificarToken,descargas)
 export default router

@@ -2,23 +2,13 @@ import { useEffect, useState } from 'react'
 import axios from 'axios'
 import '../Components/login/registro.css'
 import { useForm } from 'react-hook-form'
-import { Link, useNavigate } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
+
 const Registro = () => {
-  // const [data,setdata]=useState([])
   const navegate = useNavigate()
   const [showPassword, setShowPassword] = useState(false)
   const [showPassword1, setShowPassword1] = useState(false)
-  useEffect(() => {
-    // obtener()
-  }, [])
-  // const obtener = async()=>{
-  //   try {
-  //     const respuesta = await axios.get("http://localhost:8000/libros")
-  //     setdata(respuesta.data)
-  //   } catch (error) {
-  //     alert(error)
-  //   }
-  // }
+
   const visibilidad = () => {
     setShowPassword(!showPassword)
   }

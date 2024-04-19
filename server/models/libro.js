@@ -29,6 +29,10 @@ const Libros = db.define('libros',{
     type: DataTypes.STRING(70),
     allowNull: false
   },
+  categoria:{
+    type: DataTypes.STRING(100),
+    allowNull: false
+  },
   precio:{
     type: DataTypes.DECIMAL(10,2),
     allowNull: false

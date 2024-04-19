@@ -6,13 +6,13 @@ import '../Components/admin/inicio.css';
 import '../Components/login/registro.css';
 import '../Components/admin/crearAdmin.css';
 import { Admin } from './admin';
-// Este componente esteriliza al componente Link de react-router-dom
+
 const CrearAdmin = () => {
     const [dato, setdato] = useState([])
     const [showPassword, setShowPassword] = useState(false)
     const [showPassword1, setShowPassword1] = useState(false)
     const navegate = useNavigate()
-    
+
     const visibilidad = () => {
         setShowPassword(!showPassword)
     }
@@ -46,68 +46,68 @@ const CrearAdmin = () => {
         }
     }
     return (
-    <div className='main-inicio'>
-        <Admin />
-        <div className='saludo-container'>
-            <div className='main-crear'>
-                <div className='main-registro'>
-                    <form className='formulario-registro' onSubmit={handleSubmit(onsubmit)}>
-                        <div className='main-registro-cuadro'><p>Registro administrador</p></div>
-                        <div className='formulario-registro-contenido'>
-                            <label htmlFor='cedula'>
-                                Cedula{errors.cedula && <span className='alerta-registro'>*</span>}
-                            </label>
-                            <input type="number" name="cedula" {...register("cedula", { required: true })} />
-                            <div className='nombres-texto'>
-                                <label htmlFor='nombres'>
-                                    Nombres{errors.nombres && <span className='alerta-registro'>*</span>}
+        <div className='main-inicio'>
+            <Admin />
+            <div className='saludo-container'>
+                <div className='main-crear'>
+                    <div className='main-registro'>
+                        <form className='formulario-registro' onSubmit={handleSubmit(onsubmit)}>
+                            <div className='main-registro-cuadro'><p>Registro administrador</p></div>
+                            <div className='formulario-registro-contenido'>
+                                <label htmlFor='cedula'>
+                                    Cedula{errors.cedula && <span className='alerta-registro'>*</span>}
                                 </label>
-                                <label htmlFor='apellidos'>
-                                    Apellidos{errors.apellidos && <span className='alerta-registro'>*</span>}
+                                <input type="number" name="cedula" {...register("cedula", { required: true })} />
+                                <div className='nombres-texto'>
+                                    <label htmlFor='nombres'>
+                                        Nombres{errors.nombres && <span className='alerta-registro'>*</span>}
+                                    </label>
+                                    <label htmlFor='apellidos'>
+                                        Apellidos{errors.apellidos && <span className='alerta-registro'>*</span>}
+                                    </label>
+                                </div>
+                                <div className='nombres'>
+                                    <input type="text" name="nombres" {...register("nombres", { required: true })} />
+                                    <input type="text" name="apellidos" {...register("apellidos", { required: true })} />
+                                </div>
+                                <label htmlFor='usuario'>
+                                    Usuario{errors.usuario && <span className='alerta-registro'>*</span>}
                                 </label>
-                            </div>
-                            <div className='nombres'>
-                                <input type="text" name="nombres" {...register("nombres", { required: true })} />
-                                <input type="text" name="apellidos" {...register("apellidos", { required: true })} />
-                            </div>
-                            <label htmlFor='usuario'>
-                                Usuario{errors.usuario && <span className='alerta-registro'>*</span>}
-                            </label>
-                            <input type="text" name="usuario" {...register("usuario", { required: true })} />
-                            <label htmlFor='email'>
-                                Email{errors.email && <span className='alerta-registro'>*</span>}</label>
-                            <input type="email" name="email" {...register("email", { required: true })} />
-                            <label htmlFor='contrasena'>
-                                Contraseña{errors.contrasena && <span className='alerta-registro'>*</span>}</label>
-                            <div className='contraseña'>
-                                <input type={showPassword ? 'text' : 'password'} name="contrasena" {...register("contrasena", { required: true })} />
-                                <div className="ojo" onClick={visibilidad}>{showPassword ? <i className="fa-regular fa-eye-slash"></i> : <i className="fa-regular fa-eye"></i>}</div>
-                            </div>
-                            <label htmlFor='confirmarContrasena'>
-                                Confirmar contraseña{errors.confirmarContrasena && <span className='alerta-registro'>*</span>}</label>
-                            <div className='contraseña'>
-                                <input type={showPassword1 ? 'text' : 'password'} name="confirmarContrasena" {...register("confirmarContrasena", {
-                                    required: { value: true },
-                                    validate: (value) => {
-                                        if (value === watch("contrasena")) {
-                                            return true;
-                                        } else {
-                                            return "Las contraseñas no coinciden";
+                                <input type="text" name="usuario" {...register("usuario", { required: true })} />
+                                <label htmlFor='email'>
+                                    Email{errors.email && <span className='alerta-registro'>*</span>}</label>
+                                <input type="email" name="email" {...register("email", { required: true })} />
+                                <label htmlFor='contrasena'>
+                                    Contraseña{errors.contrasena && <span className='alerta-registro'>*</span>}</label>
+                                <div className='contraseña'>
+                                    <input type={showPassword ? 'text' : 'password'} name="contrasena" {...register("contrasena", { required: true })} />
+                                    <div className="ojo" onClick={visibilidad}>{showPassword ? <i className="fa-regular fa-eye-slash"></i> : <i className="fa-regular fa-eye"></i>}</div>
+                                </div>
+                                <label htmlFor='confirmarContrasena'>
+                                    Confirmar contraseña{errors.confirmarContrasena && <span className='alerta-registro'>*</span>}</label>
+                                <div className='contraseña'>
+                                    <input type={showPassword1 ? 'text' : 'password'} name="confirmarContrasena" {...register("confirmarContrasena", {
+                                        required: { value: true },
+                                        validate: (value) => {
+                                            if (value === watch("contrasena")) {
+                                                return true;
+                                            } else {
+                                                return "Las contraseñas no coinciden";
+                                            }
                                         }
-                                    }
-                                })}
-                                ></input>
-                                <div className="ojo" onClick={visibilidad1}>{showPassword1 ? <i className="fa-regular fa-eye-slash"></i> : <i className="fa-regular fa-eye"></i>}</div>
+                                    })}
+                                    ></input>
+                                    <div className="ojo" onClick={visibilidad1}>{showPassword1 ? <i className="fa-regular fa-eye-slash"></i> : <i className="fa-regular fa-eye"></i>}</div>
+                                </div>
+                                <div className='boton-registro'>
+                                    <button type="submit">Registrar</button>
+                                </div>
                             </div>
-                            <div className='boton-registro'>
-                                <button type="submit">Registrar</button>
-                            </div>
-                        </div>
-                    </form>
+                        </form>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
     )
 }
 export default CrearAdmin

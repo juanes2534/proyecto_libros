@@ -1,4 +1,4 @@
-import {Administradores,Categorias,Compras,LibroCategorias,Libros,Usuarios} from '../models/associations.js'
+import {Administradores,Categorias,Compras,Libros,Usuarios} from '../models/associations.js'
 import session from "express-session";
 import bcrypt from "bcrypt";
 import { Op } from "sequelize";
@@ -116,7 +116,7 @@ export const libros = async(req,res)=>{
 export const librosRecientes = async(req,res)=>{
     try {
         const datos= await Libros.findAll({
-            limit: 8, // Limita la cantidad de datos recientes a 10
+            limit: 8, // Limita la cantidad de datos recientes a 8
             order: [['fecha_publicacion', 'DESC']] // Ordena los datos por fecha de publicación de manera descendente
         })
         res.status(200).json(datos)

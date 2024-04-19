@@ -1,46 +1,50 @@
 import Navbar from './Components/Navbar/Navbar';
-import { BrowserRouter, Route, Routes, useLocation} from 'react-router-dom';
+import { BrowserRouter, Route, Routes, useLocation } from 'react-router-dom';
 import Inicio from './Pages/Inicio';
 import Categorias from './Pages/Categorias';
 import Login from './Pages/Login';
-import { Libro } from './Pages/Libro';
+import Libro from './Pages/Libro';
 import Registro from './Pages/registro';
-import { Admin } from './Pages/admin';
 import ProtectedRoute from './Pages/rutasProtegidas.jsx';
 import InicioAdmin from './Pages/inicioAdmin.jsx';
 import CrearAdmin from './Pages/crearAdmin.jsx';
 import CrearLibro from './Pages/crearLibro.jsx';
 import Estadisticas from './Pages/estadisticas.jsx';
+import Descargas from './Pages/descargas.jsx';
+
 const OutletComponent = () => (
   <Routes>
-    <Route path='*' element={<Inicio/>}/>
-    <Route path='/categorias' element={<Categorias/>}/>
-    <Route path='/login' element={<Login/>}/>
-    <Route path='/registro' element={<Registro/>}></Route>
-    <Route path='/libro/:titulo' element={<Libro/>}></Route>
+    <Route path='*' element={<Inicio />} />
+    <Route path='/categorias' element={<Categorias />} />
+    <Route path='/login' element={<Login />} />
+    <Route path='/registro' element={<Registro />}></Route>
+    <Route path='/libro/:titulo' element={<Libro />}></Route>
+    <Route path='/descargas' element={<Descargas />} />
   </Routes>
 );
+
 const AdminOutlet = () => (
   <Routes>
-    <Route path="*" element={<InicioAdmin/>} />
-    <Route path="/crearAdmin" element={<CrearAdmin/>} />
-    <Route path="/crearLibro" element={<CrearLibro/>} />
-    <Route path="/estadisticas" element={<Estadisticas/>} />
+    <Route path="*" element={<InicioAdmin />} />
+    <Route path="/crearAdmin" element={<CrearAdmin />} />
+    <Route path="/crearLibro" element={<CrearLibro />} />
+    <Route path="/estadisticas" element={<Estadisticas />} />
   </Routes>
   // <Admin></Admin>
 );
+
 function App() {
   return (
     <div>
       <BrowserRouter>
-        <RenderNavbar/>
+        <RenderNavbar />
         <div>
-        <Routes>
-          <Route path='*' element={<OutletComponent/>}></Route>
-          <Route path='/admin/*' element={<ProtectedRoute>
-            <AdminOutlet></AdminOutlet>
-          </ProtectedRoute>}/>
-        </Routes>
+          <Routes>
+            <Route path='*' element={<OutletComponent />}></Route>
+            <Route path='/admin/*' element={<ProtectedRoute>
+              <AdminOutlet></AdminOutlet>
+            </ProtectedRoute>} />
+          </Routes>
         </div>
       </BrowserRouter>
     </div>
@@ -54,7 +58,6 @@ const RenderNavbar = () => {
   if (!rutasAdmin) {
     return <Navbar />;
   }
-
   // Si es "/admin", no renderizamos Navbar
   return null;
 }

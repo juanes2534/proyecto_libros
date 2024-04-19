@@ -5,6 +5,7 @@ const Navbar = () => {
     const navegate=useNavigate()
     const [menu,setmenu]=useState('Inicio')
     const [isAuthenticated, setIsAuthenticated] = useState(false)
+    const [compra, setcompra] = useState(false)
     const token = localStorage.getItem('token');
     useEffect(()=>{
       setIsAuthenticated(!!token)
@@ -16,6 +17,10 @@ const Navbar = () => {
       localStorage.removeItem('token')
       alert("Sesión cerrada correctamente")
       navegate("/")
+    }
+    const redirigir = ()=>{
+      navegate("/descargas")
+      // setcompra(!compra)
     }
     return (
       <div className='fijo'>
@@ -30,11 +35,20 @@ const Navbar = () => {
             <li onClick={()=>{setmenu("Inicio")}}><Link style={{textDecoration:"none", color: 'inherit'}} to={'/'}>Inicio</Link>{menu==="Inicio" ? <hr></hr> : <></>}</li>
             <li onClick={()=>{setmenu("Categorias")}}><Link style={{textDecoration:"none", color: 'inherit'}} to={'/categorias'}>Categorias</Link>{menu==="Categorias" ? <hr></hr> : <></>}</li>
           </ul>
-          <div className='nav-login-cart'>
+          <div className='sesion-carro'>
+          {isAuthenticated ? <div className='carro'>
+            <button className='compra-login-boton' onClick={()=>{redirigir()}}>
+            <i className="fa-solid fa-cart-shopping fa-lg" style={{color: "#74C0FC"}}></i>
+            {compra ? <p className='carro-texto'>Compras</p> : <></>}
+            </button>
+          </div> :
+           <></>}
+           <div className='nav-login-cart'>
             {isAuthenticated ? 
             <button className='nav-login-boton' onClick={()=>{logout()}}>Cerrar Sesión</button>: 
             <button className='nav-login-boton'onClick={()=>{sacar()}}>Iniciar Sesión</button>
             }
+          </div>
           </div>
         </div>
      </div>

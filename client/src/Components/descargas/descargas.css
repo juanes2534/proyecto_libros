@@ -1,0 +1,13 @@
+.descargas{
+    width: 70%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin: 0 auto;
+    background-color: antiquewhite;
+}
+.descargas h1{
+    margin: 40px auto;
+    display: flex;
+    align-items: flex-start;
+}

@@ -1,4 +1,4 @@
-import {Administradores,Categorias,Compras,LibroCategorias,Libros,Usuarios} from '../models/associations.js'
+import {Administradores,Categorias,Compras,Libros,Usuarios} from '../models/associations.js'
 import session from "express-session";
 import bcrypt from "bcrypt";
 import { Op } from "sequelize";
@@ -46,6 +46,7 @@ export const postlibro = async(req,res)=>{
         autor,
         descripcion,
         editorial,
+        categoria,
         precio
     }=req.body
     const archivo_pdf=req.files['archivo'][0].filename
@@ -62,6 +63,7 @@ export const postlibro = async(req,res)=>{
             autor,
             descripcion,
             editorial,
+            categoria,
             precio,
             archivo_pdf,
             administradores_cedula: cedula
