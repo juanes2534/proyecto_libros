@@ -4,6 +4,7 @@ import bcrypt from "bcrypt";
 import { Op } from "sequelize";
 import Sequelize from 'sequelize';
 import path from 'path'
+import db from '../database/db.js';
 
 // Esta funcion sirve para registrar a un usuario
 export const postadmin = async(req,res)=>{
@@ -110,6 +111,33 @@ export const getadmin = async(req,res)=>{
         } else {
             // Manejar otros tipos de errores
             res.status(400).json({message:'Hubo un error al obtener informacion del administrador', error});
+        }
+    }
+}
+// obtener cuantas ventas han sido por semana
+export const ventaMes = async(req,res)=>{
+    const {year} = req.body
+    try {
+        const countMonth=[]
+        for (let i=1; i<=12; i++){
+            const cantidad= await Compras.count({ 
+                where: {
+                    [Op.and]:[
+                        db.where(db.fn('MONTH',db.col('fecha_compra')), i),
+                        db.where(db.fn('YEAR', db.col('fecha_compra')), year)
+                    ]
+                }
+            })
+            countMonth.push(cantidad)
+        }
+        res.status(200).json({countMonth})
+    } catch (error) {
+        if (error instanceof Sequelize.DatabaseError) {
+            // Manejar el error de base de datos
+            res.status(400).json({message: `Error de base datos`, error:error.message})
+        } else {
+            // Manejar otros tipos de errores
+            res.status(400).json({message:'Hubo un error al obtener informacion de la estadistica', error});
         }
     }
 }

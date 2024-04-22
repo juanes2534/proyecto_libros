@@ -1,6 +1,6 @@
 import { Link, useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
-import '../Components/admin/admin.css';
+import '../Components/css/admin/admin.css';
 import '../Components/Navbar/Navbar.css';
 // Este componente esteriliza al componente Link de react-router-dom
 const StyledLink = styled(Link)`
@@ -22,6 +22,7 @@ export const Admin = ({ dato }) => {
     navegate("/")
   }
   return (
+    <div className='fijo-menu'>
     <div className='menu-lateral'>
       <div className='nav-logo-admin'>
         <div className='salir' onClick={() => { salir() }}>
@@ -40,9 +41,10 @@ export const Admin = ({ dato }) => {
         <StyledLink to="/admin/estadisticas"><div className='crear'>Estadisticas</div></StyledLink>
         <StyledLink to="/admin/crearAdmin"><div className='crear'>Crear administrador</div></StyledLink>
         <StyledLink to="/admin/crearLibro"><div className='crear'>Crear libro</div></StyledLink>
-        {/* <StyledLink to="/admin/libros"><div className='crear'>Libros</div></StyledLink> */}
+        <StyledLink to="/admin/libros"><div className='crear'>Libros</div></StyledLink>
         {/* <StyledLink to="/admin" ><div className='crear'>Crear categorias</div></StyledLink> */}
       </div>
+    </div>
     </div>
   )
 }

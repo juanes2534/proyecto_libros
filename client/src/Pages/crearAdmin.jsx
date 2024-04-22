@@ -2,9 +2,9 @@ import { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom';
 import { useForm } from 'react-hook-form'
 import axios from 'axios';
-import '../Components/admin/inicio.css';
-import '../Components/login/registro.css';
-import '../Components/admin/crearAdmin.css';
+import '../Components/css/admin/inicio.css';
+import '../Components/css/login/registro.css';
+import '../Components/css/admin/crearAdmin.css';
 import { Admin } from './admin';
 
 const CrearAdmin = () => {

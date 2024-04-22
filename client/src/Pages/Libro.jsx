@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react'
 import { Link, useNavigate, useParams } from 'react-router-dom';
-import '../Components/libro/libro.css'
+import '../Components/css/libro/libro.css'
 import axios from 'axios';
 import styled from 'styled-components';
 import { PayPalScriptProvider, PayPalButtons } from '@paypal/react-paypal-js';

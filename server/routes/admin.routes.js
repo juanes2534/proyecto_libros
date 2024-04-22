@@ -1,6 +1,6 @@
 import express from "express";
 import { upload } from "../multer/multer.js";
-import { getadmin, imagenes, postadmin, postlibro } from "../controllers/admin.controller.js";
+import { getadmin, imagenes, postadmin, postlibro, ventaMes } from "../controllers/admin.controller.js";
 import jwt from 'jsonwebtoken'
 // esto es para poner rutas
 const router = express.Router()
@@ -27,4 +27,6 @@ router.get("/getadmin",verificarToken,getadmin)
 router.post("/postlibro", verificarToken, upload.fields([{name:'archivo', maxCount:1},{name: 'imagen', maxCount:1}]), postlibro)
 // solo para montar las imagenes pertinentes
 router.post("/imagenes", verificarToken, upload.fields([{name:'archivo', maxCount:1},{name: 'imagen', maxCount:1}]), imagenes)
+// ruta para mostrar cuantas ventas han sido por semana
+router.post("/ventaMes",verificarToken,ventaMes)
 export default router

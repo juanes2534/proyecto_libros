@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react'
 import axios from 'axios';
-import '../Components/admin/inicio.css'
+import '../Components/css/admin/inicio.css'
 import { Admin } from './admin';
 
 const InicioAdmin = () => {

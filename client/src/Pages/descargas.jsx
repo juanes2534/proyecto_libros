@@ -1,6 +1,6 @@
 import axios from 'axios';
 import { useEffect, useState } from 'react'
-import '../Components/descargas/descargas.css'
+import '../Components/css/descargas/descargas.css'
 const Descargas = () => {
     const [datos, setdatos] = useState([])
     const token = localStorage.getItem("token")
@@ -53,17 +53,20 @@ const Descargas = () => {
     return (
         <div className='descargas'>
             <h1>Todas las descargas</h1>
-            <div className='gallery-container'>
+            <div className=''>
                 {datos.map((dato) => (
-                    <div key={dato.idlibros} className='borde' onClick={() => (libro(dato.archivo_pdf))}>
-                        <div className='contenedor-imagen-libros'>
-                            <img src={"http://localhost:8000/libros/" + dato.imagen} alt='imagen' height={100} width={100}></img>
+                    <div key={dato.idlibros} className='contenedor-descargas'>
+                        <div className='descarga-imagen'>
+                            <img src={"http://localhost:8000/libros/" + dato.imagen} alt='imagen'></img>
                         </div>
-                        <div className='container-titulo'>
+                        <div className='contenedor-texto'>
                             <h2>{dato.titulo}</h2>
+                            <h4>{dato.autor}</h4>
+                            {/* <div>$ {precio(dato.precio)} USD</div> */}
                         </div>
-                        <h4>{dato.autor}</h4>
-                        <div>{precio(dato.precio)}</div>
+                        <div className='contenedor-boton'>
+                            <button className='boton-descarga' onClick={() => (libro(dato.archivo_pdf))}>Descargar</button>
+                        </div>
                     </div>
                 ))}
             </div>

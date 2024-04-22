@@ -11,6 +11,7 @@ import CrearAdmin from './Pages/crearAdmin.jsx';
 import CrearLibro from './Pages/crearLibro.jsx';
 import Estadisticas from './Pages/estadisticas.jsx';
 import Descargas from './Pages/descargas.jsx';
+import LibroAdmin from './Pages/LibroAdmin.jsx';
 
 const OutletComponent = () => (
   <Routes>
@@ -29,6 +30,7 @@ const AdminOutlet = () => (
     <Route path="/crearAdmin" element={<CrearAdmin />} />
     <Route path="/crearLibro" element={<CrearLibro />} />
     <Route path="/estadisticas" element={<Estadisticas />} />
+    <Route path='/libros' element={<LibroAdmin></LibroAdmin>}></Route>
   </Routes>
   // <Admin></Admin>
 );

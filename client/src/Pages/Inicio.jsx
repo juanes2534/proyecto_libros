@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react'
 import axios from 'axios'
-import '../Components/Inicio/inicio.css'
+import '../Components/css/Inicio/inicio.css'
 import icono from '../Components/assets/right-arrow-svgrepo-com.svg'
 import icono1 from '../Components/assets/right-arrow-svgrepo-com(2).svg'
 import { useNavigate } from 'react-router-dom'

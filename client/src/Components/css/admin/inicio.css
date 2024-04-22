@@ -14,8 +14,9 @@
     font-size: 45px;
     width: 98%;
     background-color: white;
-    height: 98vh;
+    height: 100vh;
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
     color: rgb(91, 77, 77);

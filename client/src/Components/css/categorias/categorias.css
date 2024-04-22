@@ -17,6 +17,7 @@
     align-items: center;
     justify-content: center;
     margin-top: 20px;
+    position: sticky;
 }
 .tabla-contenido-tamaño{
     padding: 13px;

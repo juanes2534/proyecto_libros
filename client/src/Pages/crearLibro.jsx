@@ -1,9 +1,9 @@
 import axios from 'axios';
 import { useForm } from 'react-hook-form'
-import '../Components/admin/inicio.css'
+import '../Components/css/admin/inicio.css'
 import { Admin } from './admin';
 import { useNavigate } from 'react-router-dom';
-import '../Components/admin/crearLibro.css'
+import '../Components/css/admin/crearLibro.css'
 
 const CrearLibro = () => {
     const navegate = useNavigate()

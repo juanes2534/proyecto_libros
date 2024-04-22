@@ -1,8 +1,10 @@
 import { useEffect, useState } from 'react'
 import axios from 'axios'
 import '../Components/css/categorias/categorias.css'
+import '../Components/css/admin/libroAdmin.css'
 import { useNavigate } from 'react-router-dom'
-const Categorias = () => {
+import { Admin } from './admin'
+const LibroAdmin = () => {
   const [data, setdata] = useState([])
   const [filtro, setfiltro] = useState([])
   const navegate = useNavigate()
@@ -55,23 +57,17 @@ const Categorias = () => {
     }
   }
   return (
-    <>
+      <div className='main-libro-admin'>
+    {/* <div className='container-menu'> */}
+       <Admin />
+    {/* </div> */}
+      <div className='libro-container'>
       <div className='main-buscador'>
         <div className='container-buscar'>
           <input type='text' placeholder='Buscar' className='buscar' onChange={(e) => { buscar(e.target.value) }}></input>
         </div>
       </div>
       <div className='centrar'>
-        <div className='tabla-contenido'>
-          <div className='tabla-contenido-categorias'>Categorias</div>
-          <div className='tabla-contenido-tamaño'>
-            <div className='categoria' onClick={() => { obtener() }}>Todas</div>
-            <div className='categoria' onClick={() => { categoria("Ficción") }}>Ficción</div>
-            <div className='categoria' onClick={() => { categoria("Aventura") }}>Aventura</div>
-            <div className='categoria' onClick={() => { categoria("Suspenso") }}>Suspenso</div>
-            <div className='categoria' onClick={() => { categoria("Romance") }}>Romance</div>
-          </div>
-        </div>
         <div className='gallery-container'>
           {filtro.map((dato) => (
             <div key={dato.idlibros} className='borde' onClick={() => (libro(dato.titulo))}>
@@ -87,8 +83,9 @@ const Categorias = () => {
           ))}
         </div>
       </div>
-    </>
+      </div>
+      </div>
   )
 }
 
-export default Categorias
+export default LibroAdmin
