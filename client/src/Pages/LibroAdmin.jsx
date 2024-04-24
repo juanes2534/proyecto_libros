@@ -22,7 +22,7 @@ const LibroAdmin = () => {
   }
   const libro = (titulo) => {
     const nombreConGuiones = titulo.replace(/\s+/g, '-');
-    navegate(`/libro/${nombreConGuiones}`)
+    navegate(`/admin/libro/${nombreConGuiones}`)
   }
   const precio = (precio1) => {
     const precioNumerico = Number(precio1);
@@ -57,34 +57,37 @@ const LibroAdmin = () => {
     }
   }
   return (
-      <div className='main-libro-admin'>
-    {/* <div className='container-menu'> */}
-       <Admin />
-    {/* </div> */}
+    <div className='main-libro-admin'>
+      <Admin />
       <div className='libro-container'>
-      <div className='main-buscador'>
-        <div className='container-buscar'>
-          <input type='text' placeholder='Buscar' className='buscar' onChange={(e) => { buscar(e.target.value) }}></input>
+        <div className='libro-conteiner-main'>
+        <div className='main-buscador-libro'>
+          <h1>Libros</h1>
+          <div className='container-buscar-libro'>
+            <input type='text' placeholder='Buscar' className='buscar-libro' onChange={(e) => { buscar(e.target.value) }}></input>
+          </div>
+        </div>
+        <div className='centrar'>
+          <div className='gallery-container-libro'>
+            {filtro.map((dato) => (
+              <div key={dato.idlibros} className='contenedor-libro' onClick={() => (libro(dato.titulo))}>
+                {/* <div className='señalar'> */}
+                <div className='contenedor-imagen-libros-admin'>
+                  <img src={"http://localhost:8000/libros/" + dato.imagen} alt='imagen'></img>
+                </div>
+                <div className='container-titulo-libro'>
+                  <h2>{dato.titulo}</h2>
+                </div>
+                <h4>{dato.autor}</h4>
+                <div>{precio(dato.precio)} USD</div>
+                {/* </div> */}
+              </div>
+            ))}
+          </div>
         </div>
       </div>
-      <div className='centrar'>
-        <div className='gallery-container'>
-          {filtro.map((dato) => (
-            <div key={dato.idlibros} className='borde' onClick={() => (libro(dato.titulo))}>
-              <div className='contenedor-imagen-libros'>
-                <img src={"http://localhost:8000/libros/" + dato.imagen} alt='imagen' height={100} width={100}></img>
-              </div>
-              <div className='container-titulo'>
-                <h2>{dato.titulo}</h2>
-              </div>
-              <h4>{dato.autor}</h4>
-              <div>{precio(dato.precio)} USD</div>
-            </div>
-          ))}
-        </div>
-      </div>
-      </div>
-      </div>
+    </div>
+    </div>
   )
 }
 

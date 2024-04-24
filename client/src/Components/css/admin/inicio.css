@@ -8,7 +8,6 @@
     background-color: rgba(113, 124, 124, 0.19);
     display: flex;
     justify-content: center;
-    align-items: center;
 }
 .saludo{
     font-size: 45px;

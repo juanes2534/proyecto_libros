@@ -21,10 +21,8 @@ const Libro = () => {
   const [dato, setdato] = useState([])
   const [sesion, setsesion] = useState(false)
   const [token, setToken] = useState(null)
-  const [compra, setcompra] = useState(false)
+  // const [compra, setcompra] = useState(false)
   const [verificar1,setverificar1] = useState(false)
-  // const [loading, setLoading] = useState(false);
-  // const [orderId, setOrderId] = useState(false);
   const navegate = useNavigate()
   //Esta variable hace el replazo del string con guion y lo pasa a espacio en blanco
   const titulo1 = titulo.replace(/-/g, ' ');
@@ -121,18 +119,21 @@ const Libro = () => {
     });
     return (precio2)
   }
+  const redirigirCompra= ()=>{
+    navegate("/descargas")
+  }
   const comprar = () => {
     if (sesion) {
       if (dato.precio === '0.00') {
         if (verificar1){
-          return (<button className='boton-comprar' onClick={() => {}}>Comprado</button>)
+          return (<button className='boton-comprar' onClick={() => {redirigirCompra()}}>Comprado</button>)
         }else{
           return (<button className='boton-comprar' onClick={() => { descargarArchivo() }}>Comprar</button>)
         }
       } else {
           if (verificar1){
             // console.log(verificar1)
-            return (<button className='boton-comprar' onClick={() => {}}>Comprado</button>)
+            return (<button className='boton-comprar' onClick={() => {redirigirCompra()}}>Comprado</button>)
           }else{
             // console.log(verificar1)
             return (<PayPalScriptProvider options={{ "client-id": "AWXm3X2mwDjAnQJavXR-Z_uVSuHI03gaMOcja-AKdWEUjb9m7fcbSHjPq06PyKmV557jdTRMxe9SZ0LJ" }}>

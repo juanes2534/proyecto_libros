@@ -49,6 +49,7 @@ const CrearAdmin = () => {
         <div className='main-inicio'>
             <Admin />
             <div className='saludo-container'>
+                <div className='contenedor-blanco'>
                 <div className='main-crear'>
                     <div className='main-registro'>
                         <form className='formulario-registro' onSubmit={handleSubmit(onsubmit)}>
@@ -104,6 +105,7 @@ const CrearAdmin = () => {
                                 </div>
                             </div>
                         </form>
+                    </div>
                     </div>
                 </div>
             </div>

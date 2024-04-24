@@ -1,14 +1,113 @@
 .main-libro-admin{
     display: flex;
     width: 100%;
-    /* height: 100vh; */
 }
 .libro-container{
-    color: rgb(91, 77, 77);
-    /* background-color: aqua; */
-    width: 100%;
-    /* border: 5px solid black;  */
+    width: 90%;
+    background-color: rgba(113, 124, 124, 0.19);
+    display: flex;
+    justify-content: center;
+    height: max-content;
 }
-/* .container-menu{
-    position: sticky;
+.libro-conteiner-main{
+    width: 98%;
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    /* height: 100vh; */
+}
+.gallery-container-libro{
+    width: 90%;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px,1fr));
+    gap:2px;
+    /* height: 100vh; */
+    /* background-color: #74C0FC; */
+}
+.container-buscar-libro{
+    display: flex;
+    width: 50%;
+    justify-content: right;
+    /* background-color: aqua; */
+}
+.main-buscador-libro{
+    display: flex;
+    justify-content: space-between;
+    margin-top: 30px;
+    width: 90%;
+    /* background-color:aquamarine; */
+}
+.buscar-libro{
+    width: 35%;
+    height: 28px;
+    border: 1px solid;
+    border-radius: 20px;
+    padding-left: 10px;
+}
+.centrar{
+    display: flex;
+    /* justify-content: center; */
+    width: 100%;
+}
+.contenedor-libro{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 400px;
+    /* background-color: aqua; */
+    cursor: pointer;
+}
+/* .señalar{
+    cursor: pointer;
+    width: min-content;
+    height: min-content;
 } */
+.contenedor-libro:hover{
+    transform: scale(1.05);
+    z-index: 0;
+}
+.container-titulo-libro h2{
+    font-size: 20px;
+    font-weight: 500;
+    display: flex;
+    justify-content: center; 
+    align-items: center;
+    height: 50px;
+    width: 90%;
+    margin: auto;
+    justify-self: center;
+    margin-bottom: 3px;
+}
+.container-titulo-libro{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.contenedor-libro h4{
+    font-weight: 600;
+    font-size: 14px;
+    color: gray;
+    margin-top: 5px;
+}
+.contenedor-libro div{
+    gap: 20px;
+    color: #010101;
+    font-weight: 600;
+}
+.contenedor-imagen-libros-admin img{
+    height: 250px;
+    width: 160px;
+}
+.contenedor-imagen-libros-admin{
+    width: 230px;
+    height: 320px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: min-content;
+    margin-bottom: 10px;
+}

@@ -1,10 +1,11 @@
 import {Administradores,Categorias,Compras,Libros,Usuarios} from '../models/associations.js'
 import session from "express-session";
 import bcrypt from "bcrypt";
-import { Op } from "sequelize";
+import { Op, where } from "sequelize";
 import Sequelize from 'sequelize';
 import path from 'path'
 import db from '../database/db.js';
+import fs from 'fs';
 
 // Esta funcion sirve para registrar a un usuario
 export const postadmin = async(req,res)=>{
@@ -51,9 +52,7 @@ export const postlibro = async(req,res)=>{
         precio
     }=req.body
     const archivo_pdf=req.files['archivo'][0].filename
-    // const archivo_pdf= path.join("C:\\Users\\alexi\\proyecto_libros\\server",archivo);
     const imagen=req.files['imagen'][0].filename
-    // const imagen= path.join("C:\\Users\\alexi\\proyecto_libros\\server", imagen1);
     console.log(imagen)
     console.log(archivo_pdf)
     const cedula = req.userid
@@ -138,6 +137,119 @@ export const ventaMes = async(req,res)=>{
         } else {
             // Manejar otros tipos de errores
             res.status(400).json({message:'Hubo un error al obtener informacion de la estadistica', error});
+        }
+    }
+}
+// Esta funcion es para traer un libro en especifico
+export const libro = async(req,res)=>{
+    const {titulo} = req.body
+    try {
+        const datos = await Libros.findOne({where:{titulo:titulo}})
+        res.status(200).json(datos)
+    } catch (error) {
+       if (error instanceof Sequelize.DatabaseError) {
+            // Manejar el error de base de datos
+            res.status(400).json({message: `Error de base datos`, error:error.message})
+        } else {
+            // Manejar otros tipos de errores
+            if (titulo!==null){
+                res.status(200)
+            }else{
+                res.status(400).json({message:'Hubo un error al traer la información del libro', error});
+            }
+        }
+    }
+}
+
+// Esto es una funcion sirve para eliminar un libro
+export const eliminarLibro = async(req,res)=>{
+    const { idlibros, imagen, archivo_pdf } = req.body
+    try {
+        const rutaImagen=`C:/Users/alexi/proyecto_libros/server/libros/${imagen}`
+        fs.unlink(rutaImagen, (err) => {
+            if (err) {
+              console.error('Error al eliminar el archivo:', err);
+              res.status(400).json({message:"Error al eliminar el archivo"});
+            }
+            console.log('El archivo ha sido eliminado correctamente.');
+        });
+        const rutaArchivo=`C:/Users/alexi/proyecto_libros/server/libros/${archivo_pdf}`
+        fs.unlink(rutaArchivo, (err) => {
+            if (err) {
+              console.error('Error al eliminar el archivo:', err);
+              res.status(400).json({message:"Error al eliminar el archivo"});
+            }
+            console.log('El archivo ha sido eliminado correctamente.');
+        });
+        console.log(idlibros)
+        await Libros.destroy({where:{idlibros:idlibros}})
+        res.status(200).json({message:"Libro eliminado correctamente"})
+    } catch (error) {
+        if (error instanceof Sequelize.DatabaseError) {
+            // Manejar el error de base de datos
+            res.status(400).json({message: `Error de base datos`, error:error.message})
+        } else {
+            // Manejar otros tipos de errores
+            res.status(400).json({message:'Hubo un error al eliminar el libro', error});
+        }
+    }     
+}
+// Esta funcion sirve para editar un libro
+export const editarLibro = async(req,res)=>{
+    const {
+        idlibros, 
+        titulo,
+        autor,
+        descripcion,
+        editorial,
+        categoria,
+        precio
+    }=req.body
+    const informacion= await Libros.findOne({where:{idlibros:idlibros}})
+    const rutaImagen=`C:/Users/alexi/proyecto_libros/server/libros/${informacion.imagen}`
+    fs.unlink(rutaImagen, (err) => {
+        if (err) {
+            console.error('Error al eliminar el archivo:', err);
+            res.status(400).json({message:"Error al eliminar el archivo"});
+        }
+        console.log('El archivo ha sido eliminado correctamente.');
+    });
+    const rutaArchivo=`C:/Users/alexi/proyecto_libros/server/libros/${informacion.archivo_pdf}`
+    fs.unlink(rutaArchivo, (err) => {
+        if (err) {
+            console.error('Error al eliminar el archivo:', err);
+            res.status(400).json({message:"Error al eliminar el archivo"});
+        }
+        console.log('El archivo ha sido eliminado correctamente.');
+    });
+    const archivo_pdf=req.files['archivo'][0].filename
+    const imagen=req.files['imagen'][0].filename
+    const cedula = req.userid
+    try {
+        await Libros.update({
+            imagen,
+            titulo,
+            autor,
+            descripcion,
+            editorial,
+            categoria,
+            precio,
+            archivo_pdf,
+            administradores_cedula:cedula
+        },
+        {
+            where:{
+                idlibros: idlibros
+            }
+        })
+        res.status(201).json({message:"El libro ha sido actualizado"})
+    } catch (error) {
+        if (error instanceof Sequelize.DatabaseError) {
+            // Manejar el error de base de datos
+            res.status(400).json({message: `Error de base datos`, error:error.message})
+        } else {
+            // Manejar otros tipos de errores
+            res.status(400).json({message:'Hubo un error al editar el libro', error});
         }
     }
 }

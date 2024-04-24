@@ -12,15 +12,17 @@ import CrearLibro from './Pages/crearLibro.jsx';
 import Estadisticas from './Pages/estadisticas.jsx';
 import Descargas from './Pages/descargas.jsx';
 import LibroAdmin from './Pages/LibroAdmin.jsx';
+import DetalleLibro from './Pages/DetalleLibro.jsx';
+import EditarLibro from './Pages/editarLibro.jsx';
 
 const OutletComponent = () => (
   <Routes>
     <Route path='*' element={<Inicio />} />
-    <Route path='/categorias' element={<Categorias />} />
-    <Route path='/login' element={<Login />} />
-    <Route path='/registro' element={<Registro />}></Route>
-    <Route path='/libro/:titulo' element={<Libro />}></Route>
-    <Route path='/descargas' element={<Descargas />} />
+    <Route path="/categorias" element={<Categorias />} />
+    <Route path="/login" element={<Login />} />
+    <Route path="/registro" element={<Registro />} />
+    <Route path="/libro/:titulo" element={<Libro />} />
+    <Route path="/descargas" element={<Descargas />} />
   </Routes>
 );
 
@@ -30,7 +32,9 @@ const AdminOutlet = () => (
     <Route path="/crearAdmin" element={<CrearAdmin />} />
     <Route path="/crearLibro" element={<CrearLibro />} />
     <Route path="/estadisticas" element={<Estadisticas />} />
-    <Route path='/libros' element={<LibroAdmin></LibroAdmin>}></Route>
+    <Route path="/libros" element={<LibroAdmin/>} />
+    <Route path="/libro/:titulo" element={<DetalleLibro/>} />
+    <Route path="/editar/:titulo" element={<EditarLibro/>} />
   </Routes>
   // <Admin></Admin>
 );
@@ -42,8 +46,8 @@ function App() {
         <RenderNavbar />
         <div>
           <Routes>
-            <Route path='*' element={<OutletComponent />}></Route>
-            <Route path='/admin/*' element={<ProtectedRoute>
+            <Route path="*" element={<OutletComponent />}></Route>
+            <Route path="/admin/*" element={<ProtectedRoute>
               <AdminOutlet></AdminOutlet>
             </ProtectedRoute>} />
           </Routes>
