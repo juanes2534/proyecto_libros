@@ -23,7 +23,6 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    /* color: rgb(91, 77, 77); */
 }
 .alerta-registro{
     color: red;

@@ -1,8 +1,8 @@
 import { Navigate } from 'react-router-dom';
 
 const ProtectedRoute = ({ children }) => {
-  // Aquí debes implementar la lógica de autenticación
-  const token = localStorage.getItem("token") // Por ejemplo, puedes verificar si hay un token de autenticación en localStorage
+  // Obtenemos el token para saber si ya el usuario se autentifico
+  const token = localStorage.getItem("token") 
 
   if (!token) {
     return <Navigate to="/login" replace />

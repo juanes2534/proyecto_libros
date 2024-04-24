@@ -15,6 +15,7 @@ import LibroAdmin from './Pages/LibroAdmin.jsx';
 import DetalleLibro from './Pages/DetalleLibro.jsx';
 import EditarLibro from './Pages/editarLibro.jsx';
 
+// Componente que contiene las rutas del apartado del usuario
 const OutletComponent = () => (
   <Routes>
     <Route path='*' element={<Inicio />} />
@@ -25,7 +26,7 @@ const OutletComponent = () => (
     <Route path="/descargas" element={<Descargas />} />
   </Routes>
 );
-
+// Componente que contiene las rutas del apartado del administrador
 const AdminOutlet = () => (
   <Routes>
     <Route path="*" element={<InicioAdmin />} />
@@ -36,7 +37,6 @@ const AdminOutlet = () => (
     <Route path="/libro/:titulo" element={<DetalleLibro/>} />
     <Route path="/editar/:titulo" element={<EditarLibro/>} />
   </Routes>
-  // <Admin></Admin>
 );
 
 function App() {

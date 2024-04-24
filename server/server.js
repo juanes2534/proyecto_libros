@@ -37,11 +37,6 @@ try {
     console.log ("Error al conectar a la bd ", error)
 }
 
-// esto es para probar el funcionamiento
-// app.get("/",(req, res)=>{
-//     res.send("hola mundo");
-// })
-
 //indicando al servidor que se maneje en el puerto 8000
 app.listen(8000, ()=>{
     console.log("server up running in http://localhost:8000/")

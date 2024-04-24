@@ -22,7 +22,6 @@
 .contenedor-botones{
     margin-top: 40px;
     width: 90%;
-    /* background-color: beige; */
     display: flex;
     justify-content: right;
 }
@@ -30,7 +29,6 @@
     background-color:#74c1fc;
     width: 140px;
     height: 40px;
-    /* border: 1px solid; */
     border-radius: 20px;
     font-size: 16px;
     margin-left: 60px;
@@ -49,8 +47,4 @@
 }
 .descripcion-libro-detalle{
     font-size: 18px;
-    /* border: 1px solid;
-    padding: 10px;
-    border-radius: 16px; */
-    /* width: 95%; */
 }

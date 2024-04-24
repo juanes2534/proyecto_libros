@@ -46,47 +46,35 @@ const LibroAdmin = () => {
       setfiltro(filtro1);
     }
   }
-  const categoria = async (categoria) => {
-    try {
-      const respuesta = await axios.post("http://localhost:8000/user/categorias", {
-        categoria: categoria
-      })
-      setfiltro(respuesta.data)
-    } catch (error) {
-      alert(error)
-    }
-  }
   return (
     <div className='main-libro-admin'>
       <Admin />
       <div className='libro-container'>
         <div className='libro-conteiner-main'>
-        <div className='main-buscador-libro'>
-          <h1>Libros</h1>
-          <div className='container-buscar-libro'>
-            <input type='text' placeholder='Buscar' className='buscar-libro' onChange={(e) => { buscar(e.target.value) }}></input>
+          <div className='main-buscador-libro'>
+            <h1>Libros</h1>
+            <div className='container-buscar-libro'>
+              <input type='text' placeholder='Buscar' className='buscar-libro' onChange={(e) => { buscar(e.target.value) }}></input>
+            </div>
           </div>
-        </div>
-        <div className='centrar'>
-          <div className='gallery-container-libro'>
-            {filtro.map((dato) => (
-              <div key={dato.idlibros} className='contenedor-libro' onClick={() => (libro(dato.titulo))}>
-                {/* <div className='señalar'> */}
-                <div className='contenedor-imagen-libros-admin'>
-                  <img src={"http://localhost:8000/libros/" + dato.imagen} alt='imagen'></img>
+          <div className='centrar'>
+            <div className='gallery-container-libro'>
+              {filtro.map((dato) => (
+                <div key={dato.idlibros} className='contenedor-libro' onClick={() => (libro(dato.titulo))}>
+                  <div className='contenedor-imagen-libros-admin'>
+                    <img src={"http://localhost:8000/libros/" + dato.imagen} alt='imagen'></img>
+                  </div>
+                  <div className='container-titulo-libro'>
+                    <h2>{dato.titulo}</h2>
+                  </div>
+                  <h4>{dato.autor}</h4>
+                  <div>{precio(dato.precio)} USD</div>
                 </div>
-                <div className='container-titulo-libro'>
-                  <h2>{dato.titulo}</h2>
-                </div>
-                <h4>{dato.autor}</h4>
-                <div>{precio(dato.precio)} USD</div>
-                {/* </div> */}
-              </div>
-            ))}
+              ))}
+            </div>
           </div>
         </div>
       </div>
-    </div>
     </div>
   )
 }

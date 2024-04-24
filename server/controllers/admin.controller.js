@@ -1,9 +1,7 @@
 import {Administradores,Categorias,Compras,Libros,Usuarios} from '../models/associations.js'
-import session from "express-session";
 import bcrypt from "bcrypt";
 import { Op, where } from "sequelize";
 import Sequelize from 'sequelize';
-import path from 'path'
 import db from '../database/db.js';
 import fs from 'fs';
 
@@ -82,18 +80,6 @@ export const postlibro = async(req,res)=>{
             // Manejar otros tipos de errores
             res.status(400).json({message:'Hubo un error al crear el libro', error});
         }
-    }
-}
-
-// Esta funcion es para subir solos imagenes y pdf (temporalmente)
-export const imagenes = async(req,res)=>{
-    const imagen = req.files.imagen[0]
-    const archivo = req.files.archivo[0]
-    const datos = {imagen, archivo}
-    try {
-        res.json(datos)
-    } catch (error) {
-        res.json({message:"Hubo un error al subir las imagenes y archivos"})
     }
 }
 

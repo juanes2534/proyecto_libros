@@ -15,28 +15,23 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    /* height: 100vh; */
 }
 .gallery-container-libro{
     width: 90%;
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(250px,1fr));
     gap:2px;
-    /* height: 100vh; */
-    /* background-color: #74C0FC; */
 }
 .container-buscar-libro{
     display: flex;
     width: 50%;
     justify-content: right;
-    /* background-color: aqua; */
 }
 .main-buscador-libro{
     display: flex;
     justify-content: space-between;
     margin-top: 30px;
     width: 90%;
-    /* background-color:aquamarine; */
 }
 .buscar-libro{
     width: 35%;
@@ -47,7 +42,6 @@
 }
 .centrar{
     display: flex;
-    /* justify-content: center; */
     width: 100%;
 }
 .contenedor-libro{
@@ -57,14 +51,8 @@
     align-items: center;
     width: 100%;
     height: 400px;
-    /* background-color: aqua; */
     cursor: pointer;
 }
-/* .señalar{
-    cursor: pointer;
-    width: min-content;
-    height: min-content;
-} */
 .contenedor-libro:hover{
     transform: scale(1.05);
     z-index: 0;

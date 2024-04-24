@@ -69,8 +69,8 @@ const Estadisticas = () => {
   };
   const cambiarYear = async (date) => {
     let year
-    if (date){
-      year=date.getFullYear()
+    if (date) {
+      year = date.getFullYear()
     }
     try {
       const respuesta = await axios.post("http://localhost:8000/admin/ventaMes", { year: year }, {
@@ -137,8 +137,8 @@ const Estadisticas = () => {
             <DatePicker
               id="yearInput"
               selected={selectedYear}
-              onChange={(date) => {copiarAño(date)}}
-              onSelect={(date) => {cambiarYear(date)}}
+              onChange={(date) => { copiarAño(date) }}
+              onSelect={(date) => { cambiarYear(date) }}
               dateFormat="yyyy"
               showYearPicker
               placeholderText="Selecciona un año"

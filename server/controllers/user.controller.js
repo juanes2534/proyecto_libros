@@ -1,10 +1,6 @@
 import {Administradores,Categorias,Compras,Libros,Usuarios} from '../models/associations.js'
-import session from "express-session";
-import bcrypt from "bcrypt";
 import { Model, Op, QueryTypes } from "sequelize";
 import Sequelize from 'sequelize';
-import path from 'path'
-import { constrainedMemory } from 'process';
 import db from '../database/db.js';
 
 // Esta funcion es para traer un libro en especifico

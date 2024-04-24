@@ -1,5 +1,4 @@
 import {Administradores,Categorias,Compras,Libros,Usuarios} from '../models/associations.js'
-import session from "express-session";
 import bcrypt from "bcrypt";
 import { Op } from "sequelize";
 import Sequelize from 'sequelize';
@@ -47,9 +46,6 @@ export const getuser = async(req,res)=>{
         if (user!==null){
             let comparacion = bcrypt.compareSync(contrasena,user.contrasena)
             if (comparacion){
-                // req.session.user = {
-                // cedula:user.cedula
-                // }
                 const token = jwt.sign({userid:user.cedula}, 'secreto', {expiresIn: '7d'})
                 res.status(200).json({message:"Inicio de sesión exitoso", token:token})
             }else{
@@ -76,9 +72,6 @@ export const getadmin = async(req,res)=>{
         if (user!==null){
             let comparacion = bcrypt.compareSync(contrasena,user.contrasena)
             if (comparacion){
-                // req.session.userAdmin = {
-                // COD:user.cedula
-                // }
                 const token = jwt.sign({userid:user.cedula}, 'secreto', {expiresIn: '7d'})
                 res.status(200).json({message:"Inicio de sesión exitoso", token:token})
             }else{

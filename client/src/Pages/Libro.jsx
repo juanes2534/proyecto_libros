@@ -22,7 +22,7 @@ const Libro = () => {
   const [sesion, setsesion] = useState(false)
   const [token, setToken] = useState(null)
   // const [compra, setcompra] = useState(false)
-  const [verificar1,setverificar1] = useState(false)
+  const [verificar1, setverificar1] = useState(false)
   const navegate = useNavigate()
   //Esta variable hace el replazo del string con guion y lo pasa a espacio en blanco
   const titulo1 = titulo.replace(/-/g, ' ');
@@ -39,19 +39,19 @@ const Libro = () => {
       // verificar(respuesta.data)
       const data = respuesta.data
       // console.log(token)
-      if (!!token){
+      if (!!token) {
         try {
-          const respuesta = await axios.post("http://localhost:8000/user/verificarCompra",{ idlibros: data.idlibros },{
+          const respuesta = await axios.post("http://localhost:8000/user/verificarCompra", { idlibros: data.idlibros }, {
             headers: {
               Authorization: token
             }
-        });
-          setverificar1(respuesta.data) 
+          });
+          setverificar1(respuesta.data)
           console.log(respuesta.data)
         } catch (error) {
           alert(error)
         }
-      }else{
+      } else {
         setverificar1(false)
       }
     } catch (error) {
@@ -119,53 +119,53 @@ const Libro = () => {
     });
     return (precio2)
   }
-  const redirigirCompra= ()=>{
+  const redirigirCompra = () => {
     navegate("/descargas")
   }
   const comprar = () => {
     if (sesion) {
       if (dato.precio === '0.00') {
-        if (verificar1){
-          return (<button className='boton-comprar' onClick={() => {redirigirCompra()}}>Comprado</button>)
-        }else{
+        if (verificar1) {
+          return (<button className='boton-comprar' onClick={() => { redirigirCompra() }}>Comprado</button>)
+        } else {
           return (<button className='boton-comprar' onClick={() => { descargarArchivo() }}>Comprar</button>)
         }
       } else {
-          if (verificar1){
-            // console.log(verificar1)
-            return (<button className='boton-comprar' onClick={() => {redirigirCompra()}}>Comprado</button>)
-          }else{
-            // console.log(verificar1)
-            return (<PayPalScriptProvider options={{ "client-id": "AWXm3X2mwDjAnQJavXR-Z_uVSuHI03gaMOcja-AKdWEUjb9m7fcbSHjPq06PyKmV557jdTRMxe9SZ0LJ" }}>
-              <PayPalButtons createOrder={(data, actions) => {
-                return actions.order.create({
-                  purchase_units: [{
-                    amount: {
-                      currency_code: 'USD',
-                      value: dato.precio
-                    },
-                    custom_id: dato.titulo
-                  }],
-                  application_context: {
-                    brand_name: 'Tienda de libros',
-                    landing_page: 'NO_PREFERENCE',
-                    user_action: 'PAY_NOW',
-                  }
+        if (verificar1) {
+          // console.log(verificar1)
+          return (<button className='boton-comprar' onClick={() => { redirigirCompra() }}>Comprado</button>)
+        } else {
+          // console.log(verificar1)
+          return (<PayPalScriptProvider options={{ "client-id": "AWXm3X2mwDjAnQJavXR-Z_uVSuHI03gaMOcja-AKdWEUjb9m7fcbSHjPq06PyKmV557jdTRMxe9SZ0LJ" }}>
+            <PayPalButtons createOrder={(data, actions) => {
+              return actions.order.create({
+                purchase_units: [{
+                  amount: {
+                    currency_code: 'USD',
+                    value: dato.precio
+                  },
+                  custom_id: dato.titulo
+                }],
+                application_context: {
+                  brand_name: 'Tienda de libros',
+                  landing_page: 'NO_PREFERENCE',
+                  user_action: 'PAY_NOW',
+                }
+              })
+            }}
+              onApprove={(data, actions) => {
+                return actions.order.capture().then(details => {
+                  console.log("Pago exitoso")
+                  console.log(details)
+                  alert("Pago exitoso se va a descargar el archivo del libro automaticamente")
+                  descargarArchivo()
                 })
               }}
-                onApprove={(data, actions) => {
-                  return actions.order.capture().then(details => {
-                    console.log("Pago exitoso")
-                    console.log(details)
-                    alert("Pago exitoso se va a descargar el archivo del libro automaticamente")
-                    descargarArchivo()
-                  })
-                }}
-              />
-            </PayPalScriptProvider>
-            );
-          }
-    }
+            />
+          </PayPalScriptProvider>
+          );
+        }
+      }
     } else {
       return (<button className='boton-comprar' onClick={() => { redirigir() }}>Comprar</button>)
     }
@@ -184,7 +184,7 @@ const Libro = () => {
           <p className='main-libro_informacion-texto-precio'><span>Precio:</span> {precio()} USD</p>
           <p className='main-libro_informacion-texto-precio'><span className='editorial'>Editorial: </span>{dato.editorial}</p>
           <div className='main-libro_informacion-boton'>
-          {comprar()}
+            {comprar()}
           </div>
         </div>
       </div>

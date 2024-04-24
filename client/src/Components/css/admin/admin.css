@@ -5,8 +5,6 @@
 .fijo-menu{
     position: sticky;
     top: 0px;
-    /* background: #d80b0b; */
-    /* z-index: 0; */
     width: 20%;
     height: min-content;
 }
@@ -16,23 +14,17 @@
     align-items: center;
 }
 .salir{
-    /* margin-right: 10%; */
     margin-left: 4%;
     display: flex;
-    /* width: 40%; */
     cursor: pointer;
-    /* background-color: bisque; */
-
 }
 .nav-logo-admin{
     display: flex;
     justify-content: center;
     align-items: center;
-    /* gap: 10px; */
     padding-top: 20px;
     padding-bottom: 20px;
     width: 100%;
-    /* background-color:aquamarine */
 }
 .nav-logo-admin p {
     color: #171717;
@@ -45,7 +37,6 @@
     align-items: center;
     padding: 7px;
     cursor: pointer;
-    /* background-color: azure; */
     width: 80%;
     height: 60px;
 }

@@ -39,15 +39,15 @@ const DetalleLibro = () => {
             }
         }
     }
-    const eliminar = async()=>{
+    const eliminar = async () => {
         try {
-            const respuesta = await axios.post("http://localhost:8000/admin/eliminarLibro",{
-                idlibros:dato.idlibros,
-                imagen:dato.imagen,
-                archivo_pdf:dato.archivo_pdf
-            },{
-                headers:{
-                    Authorization:token
+            const respuesta = await axios.post("http://localhost:8000/admin/eliminarLibro", {
+                idlibros: dato.idlibros,
+                imagen: dato.imagen,
+                archivo_pdf: dato.archivo_pdf
+            }, {
+                headers: {
+                    Authorization: token
                 }
             })
             alert(respuesta.data.message)
@@ -63,7 +63,7 @@ const DetalleLibro = () => {
             }
         }
     }
-    const editar = async()=>{
+    const editar = async () => {
         const nombreConGuiones = dato.titulo.replace(/\s+/g, '-');
         navegate(`/admin/editar/${nombreConGuiones}`)
     }
@@ -82,8 +82,8 @@ const DetalleLibro = () => {
                             <div className='descripcion-libro-detalle'>{dato.descripcion}</div>
                         </div>
                         <div className='contenedor-botones'>
-                            <button onClick={()=>{editar()}}>Editar</button>
-                            <button onClick={()=>{eliminar()}}>Eliminar</button>
+                            <button onClick={() => { editar() }}>Editar</button>
+                            <button onClick={() => { eliminar() }}>Eliminar</button>
                         </div>
                     </div>
                 </div>
